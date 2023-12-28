@@ -1,38 +1,355 @@
-.App {
+* {
+  margin: 0;
+}
+.hidden {
+  display: none;
+}
+
+.toast {
+  position: fixed;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 8px;
+  padding-right: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(217, 217, 217);
   text-align: center;
+  z-index: 11;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.toast>p {
+  font-style: 0.9rem;
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.closeBtn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: red;
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 0.8rem;
 }
 
-.App-header {
-  background-color: #282c34;
+.container {
+  width: 100%;
   min-height: 100vh;
+  text-align: center;
+  background-color: rgb(243, 243, 243);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: white;
+  box-shadow: 0 0 10px 10px #00000031;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal>h4 {
+  margin: 0.5rem 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.modal>form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: center;
+}
+
+.modal>form>label {
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.modal>form>input {
+  padding: 0.4rem;
+  border-radius: 5px;
+  border: 1px solid gray;
+  margin: 0.4rem 0;
+  min-width: 250px;
+  max-width: 80vw;
+}
+
+.modal>form>.modalLinks {
+  margin: 0;
+  width: 100%;
+  font-size: 0.9rem;
+  color: #0f35ff;
+  cursor: pointer;
+}
+
+.modal>form>.modalLinks:hover {
+  text-decoration: underline;
+}
+
+
+.modal>form>.bar {
+  background-color: gainsboro;
+  height: 2px;
+  width: 77%;
+  margin: 0.7rem 0;
+}
+
+.modal>form>.modalBtn {
+  width: 100%;
+  margin: 0.4rem 0;
+  padding: 6px 0;
+  background-color: #137bff;
+  color: white;
+  border-radius: 10px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+.modal>form>.modalBtn:disabled {
+  width: 100%;
+  margin: 0.4rem 0;
+  padding: 6px 0;
+  background-color: #d6d6d6;
+  color: rgb(113, 113, 113);
+  border-radius: 10px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ececec;
+}
+.home-container>nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  background-color: white;
+  box-shadow: 5px 0 10px #898989;
+}
+.home-container>nav button {
+  padding: 0.3rem 0.5rem;
+  background-color: #000;
   color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-shadow: 0 0 5px #717171;
+  cursor: pointer;
+}
+.home-container>main {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1rem;
+}
+.home-container>main>h3 {
+  text-align: center;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.home-container>main>.posts {
+  box-sizing: border-box;
+  background-color: white;
+  max-width: 100%;
+  min-height: 80vh;
+  box-shadow: 0 0 10px 10px #d1d1d1;
+  border-radius: 15px;
+  margin-top: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
 }
 
-.App-link {
-  color: #61dafb;
+.home-container>main>.posts>.post {
+  padding:0 1rem;
+  box-sizing: border-box;
+  width: 80%;
+  border-radius: 10px;
+  border: 1px solid rgb(217, 217, 217);
+  position: relative;
+}
+.home-container>main>.posts>.post .CRUD {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  z-index: 9;
+}
+.home-container>main>.posts>.post>.img {
+  width: 100%;
+  box-sizing: border-box;
+  height: 400px;
+  position: relative;
+}
+.home-container>main>.posts>.post>.img>.text {
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  font-size: 1.5rem;
+  z-index: 1;
+  color: gray;
+}
+.home-container>main>.posts>.post>.img>img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  z-index: 2;
+}
+.home-container>main>.posts>.post>.img>.like {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 50px;
+  aspect-ratio: 1/1;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-container>main>.posts>.post>.img>.like>span {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  z-index: 4;
+  transform: translate(0, -50%);
+  color: black;
+}
+.home-container>main>.posts>.post>.caption {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.home-container>main>.posts>.post .comments-box>form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.home-container>main>.posts>.post .comments-box>form>input {
+  width: 50%;
+  border: none;
+    border-bottom-width: medium;
+    border-bottom-style: none;
+    border-bottom-color: currentcolor;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ababab;
+  margin-right: 0.6rem;
+}
+.home-container>main>.posts>.post .comments-box .comments-text {
+text-align: center;
+  font-size: 0.9rem;
+  margin-top: 0.7rem;
+  cursor: pointer;
+}
+.home-container>main>.posts>.post .comments-box .commentBtn {
+  margin: 0.4rem 0;
+  padding: 0.5rem 0.8rem;
+  background-color: #1264d0;
+  color: white;
+  border-radius: 5pxpx;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+.home-container>main>.posts>.post .comments-box .comments {
+height: 0px;
+overflow: hidden;
+transition: all 0.2s ease-out;
+background-color: #f1f0f0;
+  box-sizing: border-box;
+}
+.home-container>main>.posts>.post .comments-box .comments p {
+  font-size: 0.9rem;
+}
+.home-container>main>.posts>.post .comments-box .comments p span{
+  margin-right: 0.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.showCMT {
+  height: auto !important;
+  max-height: 100px;
+}
+
+.liked {
+  fill: rgb(243, 28, 136);
+}
+
+
+
+.home-container>.addPost {
+  cursor: pointer;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  box-sizing: border-box;
+  padding: 0.2rem;
+  font-size: 2.4rem;
+  border-radius: 50%;
+  box-shadow: 0 0 10px black;
+  background-color: white;
+  aspect-ratio: 1/1;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-container>main .Noposts {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: absolute;
+  font-size: 2rem;
+  color: #ababab;
+  font-weight: 600;
+}
+
+.home-container .Post {
+  position: fixed;
+  z-index: 10;
+  top: 50%;
+  translate: 0 -50%;
+  display: none;
+}
+.home-container .Post>h4 {
+  text-align: center;
+}
+.home-container .Post>.closeModal {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  padding: 0.4rem;
+  box-shadow: 0 0 5px rgb(125, 125, 125);
+  color: white;
 }
